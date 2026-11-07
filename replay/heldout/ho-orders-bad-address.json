@@ -1,0 +1,757 @@
+{
+  "correct_actions": [
+    {
+      "action": "rollback_config",
+      "service": "orders"
+    }
+  ],
+  "ground_truth": {
+    "detail": {
+      "config": {
+        "upstream_payments": "http://10.0.0.9:9"
+      }
+    },
+    "fault": "bad_config",
+    "service": "orders"
+  },
+  "id": "ho-orders-bad-address",
+  "order": 8,
+  "summary": "Held-out bad upstream address on orders.",
+  "telemetry": {
+    "configs": {
+      "cache": {},
+      "gateway": {
+        "payments_fallback": false,
+        "timeout_ms": 2500,
+        "upstream_orders": "http://orders:8000"
+      },
+      "ledger": {},
+      "orders": {
+        "cache_bypass": false,
+        "cache_url": "http://cache:8000",
+        "upstream_payments": "http://10.0.0.9:9"
+      },
+      "payments": {
+        "ledger_url": "http://ledger:8000",
+        "mode": "live"
+      }
+    },
+    "health": {
+      "cache": {
+        "service": "cache",
+        "status": "up"
+      },
+      "gateway": {
+        "service": "gateway",
+        "status": "degraded"
+      },
+      "ledger": {
+        "service": "ledger",
+        "status": "up"
+      },
+      "orders": {
+        "service": "orders",
+        "status": "degraded"
+      },
+      "payments": {
+        "service": "payments",
+        "status": "up"
+      }
+    },
+    "incident_key": "ho-orders-bad-address",
+    "logs": [
+      {
+        "attributes": {
+          "key": "upstream_payments"
+        },
+        "event": "config_error",
+        "id": "ho-orders-bad-address-log-001",
+        "level": "error",
+        "message": "upstream_payments=http://10.0.0.9:9 does not match the baseline host",
+        "service": "orders",
+        "span_id": "ho-orders-bad-address-span-1-5",
+        "trace_id": "ho-orders-bad-address-trace-1"
+      },
+      {
+        "attributes": {
+          "key": "upstream_payments"
+        },
+        "event": "config_error",
+        "id": "ho-orders-bad-address-log-002",
+        "level": "error",
+        "message": "upstream_payments=http://10.0.0.9:9 does not match the baseline host",
+        "service": "orders",
+        "span_id": "ho-orders-bad-address-span-2-5",
+        "trace_id": "ho-orders-bad-address-trace-2"
+      },
+      {
+        "attributes": {
+          "key": "upstream_payments"
+        },
+        "event": "config_error",
+        "id": "ho-orders-bad-address-log-003",
+        "level": "error",
+        "message": "upstream_payments=http://10.0.0.9:9 does not match the baseline host",
+        "service": "orders",
+        "span_id": "ho-orders-bad-address-span-3-5",
+        "trace_id": "ho-orders-bad-address-trace-3"
+      },
+      {
+        "attributes": {
+          "key": "upstream_payments"
+        },
+        "event": "config_error",
+        "id": "ho-orders-bad-address-log-004",
+        "level": "error",
+        "message": "upstream_payments=http://10.0.0.9:9 does not match the baseline host",
+        "service": "orders",
+        "span_id": "ho-orders-bad-address-span-4-5",
+        "trace_id": "ho-orders-bad-address-trace-4"
+      },
+      {
+        "attributes": {
+          "component": "ledger",
+          "duration_ms": 12
+        },
+        "event": "checkpoint",
+        "id": "ho-orders-bad-address-log-005",
+        "level": "info",
+        "message": "checkpoint complete duration_ms=12",
+        "service": "ledger",
+        "span_id": null,
+        "trace_id": "ho-orders-bad-address-bg"
+      }
+    ],
+    "metrics": {
+      "cache": {
+        "error_rate": 0.0,
+        "error_rate_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "errors": 0,
+        "exclusive_ms": 8,
+        "memory_mb": 72,
+        "memory_series": [
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72
+        ],
+        "p50_ms": 8,
+        "p99_ms": 8,
+        "p99_series": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ],
+        "replicas": 1,
+        "requests": 20
+      },
+      "gateway": {
+        "error_rate": 1.0,
+        "error_rate_series": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "errors": 20,
+        "exclusive_ms": 8,
+        "memory_mb": 72,
+        "memory_series": [
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72
+        ],
+        "p50_ms": 32,
+        "p99_ms": 32,
+        "p99_series": [
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32
+        ],
+        "replicas": 1,
+        "requests": 20
+      },
+      "ledger": {
+        "error_rate": 0.0,
+        "error_rate_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "errors": 0,
+        "exclusive_ms": null,
+        "memory_mb": 72,
+        "memory_series": [
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72
+        ],
+        "p50_ms": null,
+        "p99_ms": null,
+        "p99_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "replicas": 1,
+        "requests": 0
+      },
+      "orders": {
+        "error_rate": 1.0,
+        "error_rate_series": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "errors": 20,
+        "exclusive_ms": 8,
+        "memory_mb": 72,
+        "memory_series": [
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72
+        ],
+        "p50_ms": 24,
+        "p99_ms": 24,
+        "p99_series": [
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24
+        ],
+        "replicas": 1,
+        "requests": 20
+      },
+      "payments": {
+        "error_rate": 0.0,
+        "error_rate_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "errors": 0,
+        "exclusive_ms": null,
+        "memory_mb": 72,
+        "memory_series": [
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72
+        ],
+        "p50_ms": null,
+        "p99_ms": null,
+        "p99_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "replicas": 1,
+        "requests": 0
+      }
+    },
+    "spans": [
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 32,
+        "kind": "server",
+        "name": "POST /checkout",
+        "parent_span_id": null,
+        "service": "gateway",
+        "span_id": "ho-orders-bad-address-span-1-1",
+        "status": "error",
+        "trace_id": "ho-orders-bad-address-trace-1"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 24,
+        "kind": "server",
+        "name": "POST /orders",
+        "parent_span_id": "ho-orders-bad-address-span-1-6",
+        "service": "orders",
+        "span_id": "ho-orders-bad-address-span-1-2",
+        "status": "error",
+        "trace_id": "ho-orders-bad-address-trace-1"
+      },
+      {
+        "attributes": {
+          "http.status_code": 200
+        },
+        "duration_ms": 8,
+        "kind": "server",
+        "name": "GET /cache/sku",
+        "parent_span_id": "ho-orders-bad-address-span-1-4",
+        "service": "cache",
+        "span_id": "ho-orders-bad-address-span-1-3",
+        "status": "ok",
+        "trace_id": "ho-orders-bad-address-trace-1"
+      },
+      {
+        "attributes": {
+          "peer": "cache"
+        },
+        "duration_ms": 8,
+        "kind": "client",
+        "name": "cache GET /cache/sku",
+        "parent_span_id": "ho-orders-bad-address-span-1-2",
+        "service": "orders",
+        "span_id": "ho-orders-bad-address-span-1-4",
+        "status": "ok",
+        "trace_id": "ho-orders-bad-address-trace-1"
+      },
+      {
+        "attributes": {
+          "error": "bad_upstream",
+          "peer": "payments"
+        },
+        "duration_ms": 8,
+        "kind": "client",
+        "name": "payments POST /charge",
+        "parent_span_id": "ho-orders-bad-address-span-1-2",
+        "service": "orders",
+        "span_id": "ho-orders-bad-address-span-1-5",
+        "status": "error",
+        "trace_id": "ho-orders-bad-address-trace-1"
+      },
+      {
+        "attributes": {
+          "peer": "orders"
+        },
+        "duration_ms": 24,
+        "kind": "client",
+        "name": "orders POST /orders",
+        "parent_span_id": "ho-orders-bad-address-span-1-1",
+        "service": "gateway",
+        "span_id": "ho-orders-bad-address-span-1-6",
+        "status": "error",
+        "trace_id": "ho-orders-bad-address-trace-1"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 32,
+        "kind": "server",
+        "name": "POST /checkout",
+        "parent_span_id": null,
+        "service": "gateway",
+        "span_id": "ho-orders-bad-address-span-2-1",
+        "status": "error",
+        "trace_id": "ho-orders-bad-address-trace-2"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 24,
+        "kind": "server",
+        "name": "POST /orders",
+        "parent_span_id": "ho-orders-bad-address-span-2-6",
+        "service": "orders",
+        "span_id": "ho-orders-bad-address-span-2-2",
+        "status": "error",
+        "trace_id": "ho-orders-bad-address-trace-2"
+      },
+      {
+        "attributes": {
+          "http.status_code": 200
+        },
+        "duration_ms": 8,
+        "kind": "server",
+        "name": "GET /cache/sku",
+        "parent_span_id": "ho-orders-bad-address-span-2-4",
+        "service": "cache",
+        "span_id": "ho-orders-bad-address-span-2-3",
+        "status": "ok",
+        "trace_id": "ho-orders-bad-address-trace-2"
+      },
+      {
+        "attributes": {
+          "peer": "cache"
+        },
+        "duration_ms": 8,
+        "kind": "client",
+        "name": "cache GET /cache/sku",
+        "parent_span_id": "ho-orders-bad-address-span-2-2",
+        "service": "orders",
+        "span_id": "ho-orders-bad-address-span-2-4",
+        "status": "ok",
+        "trace_id": "ho-orders-bad-address-trace-2"
+      },
+      {
+        "attributes": {
+          "error": "bad_upstream",
+          "peer": "payments"
+        },
+        "duration_ms": 8,
+        "kind": "client",
+        "name": "payments POST /charge",
+        "parent_span_id": "ho-orders-bad-address-span-2-2",
+        "service": "orders",
+        "span_id": "ho-orders-bad-address-span-2-5",
+        "status": "error",
+        "trace_id": "ho-orders-bad-address-trace-2"
+      },
+      {
+        "attributes": {
+          "peer": "orders"
+        },
+        "duration_ms": 24,
+        "kind": "client",
+        "name": "orders POST /orders",
+        "parent_span_id": "ho-orders-bad-address-span-2-1",
+        "service": "gateway",
+        "span_id": "ho-orders-bad-address-span-2-6",
+        "status": "error",
+        "trace_id": "ho-orders-bad-address-trace-2"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 32,
+        "kind": "server",
+        "name": "POST /checkout",
+        "parent_span_id": null,
+        "service": "gateway",
+        "span_id": "ho-orders-bad-address-span-3-1",
+        "status": "error",
+        "trace_id": "ho-orders-bad-address-trace-3"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 24,
+        "kind": "server",
+        "name": "POST /orders",
+        "parent_span_id": "ho-orders-bad-address-span-3-6",
+        "service": "orders",
+        "span_id": "ho-orders-bad-address-span-3-2",
+        "status": "error",
+        "trace_id": "ho-orders-bad-address-trace-3"
+      },
+      {
+        "attributes": {
+          "http.status_code": 200
+        },
+        "duration_ms": 8,
+        "kind": "server",
+        "name": "GET /cache/sku",
+        "parent_span_id": "ho-orders-bad-address-span-3-4",
+        "service": "cache",
+        "span_id": "ho-orders-bad-address-span-3-3",
+        "status": "ok",
+        "trace_id": "ho-orders-bad-address-trace-3"
+      },
+      {
+        "attributes": {
+          "peer": "cache"
+        },
+        "duration_ms": 8,
+        "kind": "client",
+        "name": "cache GET /cache/sku",
+        "parent_span_id": "ho-orders-bad-address-span-3-2",
+        "service": "orders",
+        "span_id": "ho-orders-bad-address-span-3-4",
+        "status": "ok",
+        "trace_id": "ho-orders-bad-address-trace-3"
+      },
+      {
+        "attributes": {
+          "error": "bad_upstream",
+          "peer": "payments"
+        },
+        "duration_ms": 8,
+        "kind": "client",
+        "name": "payments POST /charge",
+        "parent_span_id": "ho-orders-bad-address-span-3-2",
+        "service": "orders",
+        "span_id": "ho-orders-bad-address-span-3-5",
+        "status": "error",
+        "trace_id": "ho-orders-bad-address-trace-3"
+      },
+      {
+        "attributes": {
+          "peer": "orders"
+        },
+        "duration_ms": 24,
+        "kind": "client",
+        "name": "orders POST /orders",
+        "parent_span_id": "ho-orders-bad-address-span-3-1",
+        "service": "gateway",
+        "span_id": "ho-orders-bad-address-span-3-6",
+        "status": "error",
+        "trace_id": "ho-orders-bad-address-trace-3"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 32,
+        "kind": "server",
+        "name": "POST /checkout",
+        "parent_span_id": null,
+        "service": "gateway",
+        "span_id": "ho-orders-bad-address-span-4-1",
+        "status": "error",
+        "trace_id": "ho-orders-bad-address-trace-4"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 24,
+        "kind": "server",
+        "name": "POST /orders",
+        "parent_span_id": "ho-orders-bad-address-span-4-6",
+        "service": "orders",
+        "span_id": "ho-orders-bad-address-span-4-2",
+        "status": "error",
+        "trace_id": "ho-orders-bad-address-trace-4"
+      },
+      {
+        "attributes": {
+          "http.status_code": 200
+        },
+        "duration_ms": 8,
+        "kind": "server",
+        "name": "GET /cache/sku",
+        "parent_span_id": "ho-orders-bad-address-span-4-4",
+        "service": "cache",
+        "span_id": "ho-orders-bad-address-span-4-3",
+        "status": "ok",
+        "trace_id": "ho-orders-bad-address-trace-4"
+      },
+      {
+        "attributes": {
+          "peer": "cache"
+        },
+        "duration_ms": 8,
+        "kind": "client",
+        "name": "cache GET /cache/sku",
+        "parent_span_id": "ho-orders-bad-address-span-4-2",
+        "service": "orders",
+        "span_id": "ho-orders-bad-address-span-4-4",
+        "status": "ok",
+        "trace_id": "ho-orders-bad-address-trace-4"
+      },
+      {
+        "attributes": {
+          "error": "bad_upstream",
+          "peer": "payments"
+        },
+        "duration_ms": 8,
+        "kind": "client",
+        "name": "payments POST /charge",
+        "parent_span_id": "ho-orders-bad-address-span-4-2",
+        "service": "orders",
+        "span_id": "ho-orders-bad-address-span-4-5",
+        "status": "error",
+        "trace_id": "ho-orders-bad-address-trace-4"
+      },
+      {
+        "attributes": {
+          "peer": "orders"
+        },
+        "duration_ms": 24,
+        "kind": "client",
+        "name": "orders POST /orders",
+        "parent_span_id": "ho-orders-bad-address-span-4-1",
+        "service": "gateway",
+        "span_id": "ho-orders-bad-address-span-4-6",
+        "status": "error",
+        "trace_id": "ho-orders-bad-address-trace-4"
+      }
+    ]
+  },
+  "title": "Orders points at an unroutable address",
+  "world": {
+    "services": {
+      "cache": {
+        "config": {},
+        "crashed": false,
+        "latency_ms": 0,
+        "memory_leak": false,
+        "replicas": 1
+      },
+      "gateway": {
+        "config": {
+          "payments_fallback": false,
+          "timeout_ms": 2500,
+          "upstream_orders": "http://orders:8000"
+        },
+        "crashed": false,
+        "latency_ms": 0,
+        "memory_leak": false,
+        "replicas": 1
+      },
+      "ledger": {
+        "config": {},
+        "crashed": false,
+        "latency_ms": 0,
+        "memory_leak": false,
+        "replicas": 1
+      },
+      "orders": {
+        "config": {
+          "cache_bypass": false,
+          "cache_url": "http://cache:8000",
+          "upstream_payments": "http://10.0.0.9:9"
+        },
+        "crashed": false,
+        "latency_ms": 0,
+        "memory_leak": false,
+        "replicas": 1
+      },
+      "payments": {
+        "config": {
+          "ledger_url": "http://ledger:8000",
+          "mode": "live"
+        },
+        "crashed": false,
+        "latency_ms": 0,
+        "memory_leak": false,
+        "replicas": 1
+      }
+    }
+  }
+}

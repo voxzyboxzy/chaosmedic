@@ -1,0 +1,106 @@
+x-lab-health: &lab-health
+  test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+  interval: 2s
+  timeout: 3s
+  retries: 20
+  start_period: 3s
+
+x-lab-env: &lab-env
+  LAB_TOKEN: local-lab
+  CHAOSMEDIC_OTLP_ENDPOINT: http://chaosmedic:8080
+  ORDERS_URL: http://orders:8000
+  PAYMENTS_URL: http://payments:8000
+  CACHE_URL: http://cache:8000
+  LEDGER_URL: http://ledger:8000
+
+services:
+  chaosmedic:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      CHAOSMEDIC_MODE: live
+      CHAOSMEDIC_DIAGNOSER: rules
+      CHAOSMEDIC_DB: /data/chaosmedic.db
+      LAB_TOKEN: local-lab
+      GATEWAY_URL: http://gateway:8000
+      ORDERS_URL: http://orders:8000
+      PAYMENTS_URL: http://payments:8000
+      CACHE_URL: http://cache:8000
+      LEDGER_URL: http://ledger:8000
+    volumes:
+      - chaosmedic-data:/data
+    depends_on:
+      gateway:
+        condition: service_healthy
+      orders:
+        condition: service_healthy
+      payments:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+      ledger:
+        condition: service_healthy
+
+  gateway:
+    build:
+      context: .
+      dockerfile: lab/Dockerfile
+    command: ["uvicorn", "lab.gateway.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    environment: *lab-env
+    ports:
+      - "8001:8000"
+    healthcheck: *lab-health
+
+  orders:
+    build:
+      context: .
+      dockerfile: lab/Dockerfile
+    command: ["uvicorn", "lab.orders.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    environment: *lab-env
+    ports:
+      - "8002:8000"
+    healthcheck: *lab-health
+
+  payments:
+    build:
+      context: .
+      dockerfile: lab/Dockerfile
+    command: ["uvicorn", "lab.payments.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    environment: *lab-env
+    ports:
+      - "8003:8000"
+    healthcheck: *lab-health
+
+  cache:
+    build:
+      context: .
+      dockerfile: lab/Dockerfile
+    command: ["uvicorn", "lab.cache.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    environment: *lab-env
+    ports:
+      - "8004:8000"
+    healthcheck: *lab-health
+
+  ledger:
+    build:
+      context: .
+      dockerfile: lab/Dockerfile
+    command: ["uvicorn", "lab.ledger.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    environment: *lab-env
+    ports:
+      - "8005:8000"
+    healthcheck: *lab-health
+
+  dashboard:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - chaosmedic
+
+volumes:
+  chaosmedic-data:

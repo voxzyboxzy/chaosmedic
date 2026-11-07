@@ -1,0 +1,245 @@
+{
+  "cases": [
+    {
+      "correct_root_cause": true,
+      "diagnosis_ms": 0.17,
+      "fault": "service_crash",
+      "id": "ho-payments-crash",
+      "predicted_fault": "service_crash",
+      "predicted_service": "payments",
+      "proposed_action": {
+        "action": "restart_service",
+        "service": "payments"
+      },
+      "recovered": true,
+      "service": "payments",
+      "tool_calls": 15,
+      "unnecessary_actions": 0
+    },
+    {
+      "correct_root_cause": true,
+      "diagnosis_ms": 0.175,
+      "fault": "latency_spike",
+      "id": "ho-gateway-latency",
+      "predicted_fault": "latency_spike",
+      "predicted_service": "gateway",
+      "proposed_action": {
+        "action": "scale_service",
+        "replicas": 3,
+        "service": "gateway"
+      },
+      "recovered": true,
+      "service": "gateway",
+      "tool_calls": 15,
+      "unnecessary_actions": 0
+    },
+    {
+      "correct_root_cause": true,
+      "diagnosis_ms": 0.162,
+      "fault": "latency_spike",
+      "id": "ho-orders-latency",
+      "predicted_fault": "latency_spike",
+      "predicted_service": "orders",
+      "proposed_action": {
+        "action": "scale_service",
+        "replicas": 3,
+        "service": "orders"
+      },
+      "recovered": true,
+      "service": "orders",
+      "tool_calls": 15,
+      "unnecessary_actions": 0
+    },
+    {
+      "correct_root_cause": true,
+      "diagnosis_ms": 0.156,
+      "fault": "latency_spike",
+      "id": "ho-payments-slow-success",
+      "predicted_fault": "latency_spike",
+      "predicted_service": "payments",
+      "proposed_action": {
+        "action": "scale_service",
+        "replicas": 3,
+        "service": "payments"
+      },
+      "recovered": true,
+      "service": "payments",
+      "tool_calls": 15,
+      "unnecessary_actions": 0
+    },
+    {
+      "correct_root_cause": true,
+      "diagnosis_ms": 0.153,
+      "fault": "latency_spike",
+      "id": "ho-payments-very-slow",
+      "predicted_fault": "latency_spike",
+      "predicted_service": "payments",
+      "proposed_action": {
+        "action": "scale_service",
+        "replicas": 3,
+        "service": "payments"
+      },
+      "recovered": true,
+      "service": "payments",
+      "tool_calls": 15,
+      "unnecessary_actions": 0
+    },
+    {
+      "correct_root_cause": true,
+      "diagnosis_ms": 0.066,
+      "fault": "bad_config",
+      "id": "ho-gateway-timeout-config",
+      "predicted_fault": "bad_config",
+      "predicted_service": "gateway",
+      "proposed_action": {
+        "action": "rollback_config",
+        "service": "gateway"
+      },
+      "recovered": true,
+      "service": "gateway",
+      "tool_calls": 15,
+      "unnecessary_actions": 0
+    },
+    {
+      "correct_root_cause": true,
+      "diagnosis_ms": 0.119,
+      "fault": "bad_config",
+      "id": "ho-payments-sandbox-mode",
+      "predicted_fault": "bad_config",
+      "predicted_service": "payments",
+      "proposed_action": {
+        "action": "rollback_config",
+        "service": "payments"
+      },
+      "recovered": true,
+      "service": "payments",
+      "tool_calls": 15,
+      "unnecessary_actions": 0
+    },
+    {
+      "correct_root_cause": true,
+      "diagnosis_ms": 0.099,
+      "fault": "bad_config",
+      "id": "ho-orders-bad-address",
+      "predicted_fault": "bad_config",
+      "predicted_service": "orders",
+      "proposed_action": {
+        "action": "rollback_config",
+        "service": "orders"
+      },
+      "recovered": true,
+      "service": "orders",
+      "tool_calls": 15,
+      "unnecessary_actions": 0
+    },
+    {
+      "correct_root_cause": true,
+      "diagnosis_ms": 0.089,
+      "fault": "dependency_outage",
+      "id": "ho-cache-down",
+      "predicted_fault": "dependency_outage",
+      "predicted_service": "cache",
+      "proposed_action": {
+        "action": "restart_service",
+        "service": "cache"
+      },
+      "recovered": true,
+      "service": "cache",
+      "tool_calls": 15,
+      "unnecessary_actions": 0
+    },
+    {
+      "correct_root_cause": true,
+      "diagnosis_ms": 0.121,
+      "fault": "dependency_outage",
+      "id": "ho-ledger-down",
+      "predicted_fault": "dependency_outage",
+      "predicted_service": "ledger",
+      "proposed_action": {
+        "action": "restart_service",
+        "service": "ledger"
+      },
+      "recovered": true,
+      "service": "ledger",
+      "tool_calls": 15,
+      "unnecessary_actions": 0
+    },
+    {
+      "correct_root_cause": true,
+      "diagnosis_ms": 0.145,
+      "fault": "memory_leak",
+      "id": "ho-payments-memory",
+      "predicted_fault": "memory_leak",
+      "predicted_service": "payments",
+      "proposed_action": {
+        "action": "restart_service",
+        "service": "payments"
+      },
+      "recovered": true,
+      "service": "payments",
+      "tool_calls": 15,
+      "unnecessary_actions": 0
+    },
+    {
+      "correct_root_cause": true,
+      "diagnosis_ms": 0.15,
+      "fault": "memory_leak",
+      "id": "ho-orders-memory",
+      "predicted_fault": "memory_leak",
+      "predicted_service": "orders",
+      "proposed_action": {
+        "action": "restart_service",
+        "service": "orders"
+      },
+      "recovered": true,
+      "service": "orders",
+      "tool_calls": 15,
+      "unnecessary_actions": 0
+    },
+    {
+      "correct_root_cause": true,
+      "diagnosis_ms": 0.047,
+      "fault": "service_crash",
+      "id": "ho-gateway-crash",
+      "predicted_fault": "service_crash",
+      "predicted_service": "gateway",
+      "proposed_action": {
+        "action": "restart_service",
+        "service": "gateway"
+      },
+      "recovered": true,
+      "service": "gateway",
+      "tool_calls": 15,
+      "unnecessary_actions": 0
+    },
+    {
+      "correct_root_cause": true,
+      "diagnosis_ms": 0.067,
+      "fault": "service_crash",
+      "id": "ho-orders-crash",
+      "predicted_fault": "service_crash",
+      "predicted_service": "orders",
+      "proposed_action": {
+        "action": "restart_service",
+        "service": "orders"
+      },
+      "recovered": true,
+      "service": "orders",
+      "tool_calls": 15,
+      "unnecessary_actions": 0
+    }
+  ],
+  "diagnoser": "rules",
+  "harness": "chaosmedic.eval",
+  "incidents": 14,
+  "max_time_to_diagnosis_ms": 0.175,
+  "mean_time_to_diagnosis_ms": 0.123,
+  "mean_tool_calls": 15.0,
+  "median_time_to_diagnosis_ms": 0.133,
+  "recovery_success_rate": 1.0,
+  "recovery_successes": 14,
+  "root_cause_accuracy": 1.0,
+  "root_cause_correct": 14,
+  "unnecessary_action_rate": 0.0,
+  "unnecessary_actions": 0
+}
