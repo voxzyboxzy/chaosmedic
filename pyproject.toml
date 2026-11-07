@@ -1,0 +1,12 @@
+[project]
+name = "chaosmedic"
+version = "1.0.0"
+description = "AI incident commander for a local microservice lab."
+requires-python = ">=3.11"
+readme = "README.md"
+license = { text = "MIT" }
+
+[tool.pytest.ini_options]
+pythonpath = ["backend", "."]
+testpaths = ["backend/tests"]
+addopts = "-q"

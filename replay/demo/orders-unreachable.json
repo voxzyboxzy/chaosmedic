@@ -1,0 +1,553 @@
+{
+  "correct_actions": [
+    {
+      "action": "restart_service",
+      "service": "orders"
+    }
+  ],
+  "ground_truth": {
+    "detail": {},
+    "fault": "service_crash",
+    "service": "orders"
+  },
+  "id": "orders-unreachable",
+  "order": 2,
+  "summary": "The gateway can no longer open a connection to orders.",
+  "telemetry": {
+    "configs": {
+      "cache": {},
+      "gateway": {
+        "payments_fallback": false,
+        "timeout_ms": 2500,
+        "upstream_orders": "http://orders:8000"
+      },
+      "ledger": {},
+      "orders": {
+        "cache_bypass": false,
+        "cache_url": "http://cache:8000",
+        "upstream_payments": "http://payments:8000"
+      },
+      "payments": {
+        "ledger_url": "http://ledger:8000",
+        "mode": "live"
+      }
+    },
+    "health": {
+      "cache": {
+        "service": "cache",
+        "status": "up"
+      },
+      "gateway": {
+        "service": "gateway",
+        "status": "degraded"
+      },
+      "ledger": {
+        "service": "ledger",
+        "status": "up"
+      },
+      "orders": {
+        "service": "orders",
+        "status": "down"
+      },
+      "payments": {
+        "service": "payments",
+        "status": "up"
+      }
+    },
+    "incident_key": "orders-unreachable",
+    "logs": [
+      {
+        "attributes": {
+          "upstream": "orders"
+        },
+        "event": "upstream_error",
+        "id": "orders-unreachable-log-001",
+        "level": "error",
+        "message": "connection refused while calling orders",
+        "service": "gateway",
+        "span_id": "orders-unreachable-span-1-2",
+        "trace_id": "orders-unreachable-trace-1"
+      },
+      {
+        "attributes": {
+          "upstream": "orders"
+        },
+        "event": "upstream_error",
+        "id": "orders-unreachable-log-002",
+        "level": "error",
+        "message": "connection refused while calling orders",
+        "service": "gateway",
+        "span_id": "orders-unreachable-span-2-2",
+        "trace_id": "orders-unreachable-trace-2"
+      },
+      {
+        "attributes": {
+          "upstream": "orders"
+        },
+        "event": "upstream_error",
+        "id": "orders-unreachable-log-003",
+        "level": "error",
+        "message": "connection refused while calling orders",
+        "service": "gateway",
+        "span_id": "orders-unreachable-span-3-2",
+        "trace_id": "orders-unreachable-trace-3"
+      },
+      {
+        "attributes": {
+          "upstream": "orders"
+        },
+        "event": "upstream_error",
+        "id": "orders-unreachable-log-004",
+        "level": "error",
+        "message": "connection refused while calling orders",
+        "service": "gateway",
+        "span_id": "orders-unreachable-span-4-2",
+        "trace_id": "orders-unreachable-trace-4"
+      },
+      {
+        "attributes": {
+          "component": "ledger",
+          "duration_ms": 12
+        },
+        "event": "checkpoint",
+        "id": "orders-unreachable-log-005",
+        "level": "info",
+        "message": "checkpoint complete duration_ms=12",
+        "service": "ledger",
+        "span_id": null,
+        "trace_id": "orders-unreachable-bg"
+      },
+      {
+        "attributes": {
+          "target": "orders"
+        },
+        "event": "health_failed",
+        "id": "orders-unreachable-log-006",
+        "level": "error",
+        "message": "health check failed: orders connection refused",
+        "service": "probe",
+        "span_id": null,
+        "trace_id": "orders-unreachable-probe-orders"
+      }
+    ],
+    "metrics": {
+      "cache": {
+        "error_rate": 0.0,
+        "error_rate_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "errors": 0,
+        "exclusive_ms": null,
+        "memory_mb": 72,
+        "memory_series": [
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72
+        ],
+        "p50_ms": null,
+        "p99_ms": null,
+        "p99_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "replicas": 1,
+        "requests": 0
+      },
+      "gateway": {
+        "error_rate": 1.0,
+        "error_rate_series": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "errors": 20,
+        "exclusive_ms": 8,
+        "memory_mb": 72,
+        "memory_series": [
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72
+        ],
+        "p50_ms": 20,
+        "p99_ms": 20,
+        "p99_series": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "replicas": 1,
+        "requests": 20
+      },
+      "ledger": {
+        "error_rate": 0.0,
+        "error_rate_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "errors": 0,
+        "exclusive_ms": null,
+        "memory_mb": 72,
+        "memory_series": [
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72
+        ],
+        "p50_ms": null,
+        "p99_ms": null,
+        "p99_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "replicas": 1,
+        "requests": 0
+      },
+      "orders": {
+        "error_rate": 0.0,
+        "error_rate_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "errors": 0,
+        "exclusive_ms": null,
+        "memory_mb": 0,
+        "memory_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "p50_ms": null,
+        "p99_ms": null,
+        "p99_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "replicas": 1,
+        "requests": 0
+      },
+      "payments": {
+        "error_rate": 0.0,
+        "error_rate_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "errors": 0,
+        "exclusive_ms": null,
+        "memory_mb": 72,
+        "memory_series": [
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72
+        ],
+        "p50_ms": null,
+        "p99_ms": null,
+        "p99_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "replicas": 1,
+        "requests": 0
+      }
+    },
+    "spans": [
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 20,
+        "kind": "server",
+        "name": "POST /checkout",
+        "parent_span_id": null,
+        "service": "gateway",
+        "span_id": "orders-unreachable-span-1-1",
+        "status": "error",
+        "trace_id": "orders-unreachable-trace-1"
+      },
+      {
+        "attributes": {
+          "peer": "orders"
+        },
+        "duration_ms": 12,
+        "kind": "client",
+        "name": "orders POST /orders",
+        "parent_span_id": "orders-unreachable-span-1-1",
+        "service": "gateway",
+        "span_id": "orders-unreachable-span-1-2",
+        "status": "error",
+        "trace_id": "orders-unreachable-trace-1"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 20,
+        "kind": "server",
+        "name": "POST /checkout",
+        "parent_span_id": null,
+        "service": "gateway",
+        "span_id": "orders-unreachable-span-2-1",
+        "status": "error",
+        "trace_id": "orders-unreachable-trace-2"
+      },
+      {
+        "attributes": {
+          "peer": "orders"
+        },
+        "duration_ms": 12,
+        "kind": "client",
+        "name": "orders POST /orders",
+        "parent_span_id": "orders-unreachable-span-2-1",
+        "service": "gateway",
+        "span_id": "orders-unreachable-span-2-2",
+        "status": "error",
+        "trace_id": "orders-unreachable-trace-2"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 20,
+        "kind": "server",
+        "name": "POST /checkout",
+        "parent_span_id": null,
+        "service": "gateway",
+        "span_id": "orders-unreachable-span-3-1",
+        "status": "error",
+        "trace_id": "orders-unreachable-trace-3"
+      },
+      {
+        "attributes": {
+          "peer": "orders"
+        },
+        "duration_ms": 12,
+        "kind": "client",
+        "name": "orders POST /orders",
+        "parent_span_id": "orders-unreachable-span-3-1",
+        "service": "gateway",
+        "span_id": "orders-unreachable-span-3-2",
+        "status": "error",
+        "trace_id": "orders-unreachable-trace-3"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 20,
+        "kind": "server",
+        "name": "POST /checkout",
+        "parent_span_id": null,
+        "service": "gateway",
+        "span_id": "orders-unreachable-span-4-1",
+        "status": "error",
+        "trace_id": "orders-unreachable-trace-4"
+      },
+      {
+        "attributes": {
+          "peer": "orders"
+        },
+        "duration_ms": 12,
+        "kind": "client",
+        "name": "orders POST /orders",
+        "parent_span_id": "orders-unreachable-span-4-1",
+        "service": "gateway",
+        "span_id": "orders-unreachable-span-4-2",
+        "status": "error",
+        "trace_id": "orders-unreachable-trace-4"
+      }
+    ]
+  },
+  "title": "Orders go unreachable",
+  "world": {
+    "services": {
+      "cache": {
+        "config": {},
+        "crashed": false,
+        "latency_ms": 0,
+        "memory_leak": false,
+        "replicas": 1
+      },
+      "gateway": {
+        "config": {
+          "payments_fallback": false,
+          "timeout_ms": 2500,
+          "upstream_orders": "http://orders:8000"
+        },
+        "crashed": false,
+        "latency_ms": 0,
+        "memory_leak": false,
+        "replicas": 1
+      },
+      "ledger": {
+        "config": {},
+        "crashed": false,
+        "latency_ms": 0,
+        "memory_leak": false,
+        "replicas": 1
+      },
+      "orders": {
+        "config": {
+          "cache_bypass": false,
+          "cache_url": "http://cache:8000",
+          "upstream_payments": "http://payments:8000"
+        },
+        "crashed": true,
+        "latency_ms": 0,
+        "memory_leak": false,
+        "replicas": 1
+      },
+      "payments": {
+        "config": {
+          "ledger_url": "http://ledger:8000",
+          "mode": "live"
+        },
+        "crashed": false,
+        "latency_ms": 0,
+        "memory_leak": false,
+        "replicas": 1
+      }
+    }
+  }
+}

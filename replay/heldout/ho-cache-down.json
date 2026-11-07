@@ -1,0 +1,667 @@
+{
+  "correct_actions": [
+    {
+      "action": "restart_service",
+      "service": "cache"
+    },
+    {
+      "action": "toggle_flag",
+      "flag": "cache_bypass",
+      "service": "orders",
+      "value": true
+    }
+  ],
+  "ground_truth": {
+    "detail": {},
+    "fault": "dependency_outage",
+    "service": "cache"
+  },
+  "id": "ho-cache-down",
+  "order": 9,
+  "summary": "Held-out cache outage.",
+  "telemetry": {
+    "configs": {
+      "cache": {},
+      "gateway": {
+        "payments_fallback": false,
+        "timeout_ms": 2500,
+        "upstream_orders": "http://orders:8000"
+      },
+      "ledger": {},
+      "orders": {
+        "cache_bypass": false,
+        "cache_url": "http://cache:8000",
+        "upstream_payments": "http://payments:8000"
+      },
+      "payments": {
+        "ledger_url": "http://ledger:8000",
+        "mode": "live"
+      }
+    },
+    "health": {
+      "cache": {
+        "service": "cache",
+        "status": "down"
+      },
+      "gateway": {
+        "service": "gateway",
+        "status": "degraded"
+      },
+      "ledger": {
+        "service": "ledger",
+        "status": "up"
+      },
+      "orders": {
+        "service": "orders",
+        "status": "degraded"
+      },
+      "payments": {
+        "service": "payments",
+        "status": "up"
+      }
+    },
+    "incident_key": "ho-cache-down",
+    "logs": [
+      {
+        "attributes": {
+          "dependency": "cache"
+        },
+        "event": "dependency_error",
+        "id": "ho-cache-down-log-001",
+        "level": "error",
+        "message": "connection refused while calling cache",
+        "service": "orders",
+        "span_id": "ho-cache-down-span-1-3",
+        "trace_id": "ho-cache-down-trace-1"
+      },
+      {
+        "attributes": {
+          "dependency": "cache"
+        },
+        "event": "dependency_error",
+        "id": "ho-cache-down-log-002",
+        "level": "error",
+        "message": "connection refused while calling cache",
+        "service": "orders",
+        "span_id": "ho-cache-down-span-2-3",
+        "trace_id": "ho-cache-down-trace-2"
+      },
+      {
+        "attributes": {
+          "dependency": "cache"
+        },
+        "event": "dependency_error",
+        "id": "ho-cache-down-log-003",
+        "level": "error",
+        "message": "connection refused while calling cache",
+        "service": "orders",
+        "span_id": "ho-cache-down-span-3-3",
+        "trace_id": "ho-cache-down-trace-3"
+      },
+      {
+        "attributes": {
+          "dependency": "cache"
+        },
+        "event": "dependency_error",
+        "id": "ho-cache-down-log-004",
+        "level": "error",
+        "message": "connection refused while calling cache",
+        "service": "orders",
+        "span_id": "ho-cache-down-span-4-3",
+        "trace_id": "ho-cache-down-trace-4"
+      },
+      {
+        "attributes": {
+          "component": "ledger",
+          "duration_ms": 12
+        },
+        "event": "checkpoint",
+        "id": "ho-cache-down-log-005",
+        "level": "info",
+        "message": "checkpoint complete duration_ms=12",
+        "service": "ledger",
+        "span_id": null,
+        "trace_id": "ho-cache-down-bg"
+      },
+      {
+        "attributes": {
+          "target": "cache"
+        },
+        "event": "health_failed",
+        "id": "ho-cache-down-log-006",
+        "level": "error",
+        "message": "health check failed: cache connection refused",
+        "service": "probe",
+        "span_id": null,
+        "trace_id": "ho-cache-down-probe-cache"
+      }
+    ],
+    "metrics": {
+      "cache": {
+        "error_rate": 0.0,
+        "error_rate_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "errors": 0,
+        "exclusive_ms": null,
+        "memory_mb": 0,
+        "memory_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "p50_ms": null,
+        "p99_ms": null,
+        "p99_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "replicas": 1,
+        "requests": 0
+      },
+      "gateway": {
+        "error_rate": 1.0,
+        "error_rate_series": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "errors": 20,
+        "exclusive_ms": 8,
+        "memory_mb": 72,
+        "memory_series": [
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72
+        ],
+        "p50_ms": 28,
+        "p99_ms": 28,
+        "p99_series": [
+          28,
+          28,
+          28,
+          28,
+          28,
+          28,
+          28,
+          28,
+          28,
+          28,
+          28,
+          28
+        ],
+        "replicas": 1,
+        "requests": 20
+      },
+      "ledger": {
+        "error_rate": 0.0,
+        "error_rate_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "errors": 0,
+        "exclusive_ms": null,
+        "memory_mb": 72,
+        "memory_series": [
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72
+        ],
+        "p50_ms": null,
+        "p99_ms": null,
+        "p99_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "replicas": 1,
+        "requests": 0
+      },
+      "orders": {
+        "error_rate": 1.0,
+        "error_rate_series": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "errors": 20,
+        "exclusive_ms": 8,
+        "memory_mb": 72,
+        "memory_series": [
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72
+        ],
+        "p50_ms": 20,
+        "p99_ms": 20,
+        "p99_series": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "replicas": 1,
+        "requests": 20
+      },
+      "payments": {
+        "error_rate": 0.0,
+        "error_rate_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "errors": 0,
+        "exclusive_ms": null,
+        "memory_mb": 72,
+        "memory_series": [
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72,
+          72
+        ],
+        "p50_ms": null,
+        "p99_ms": null,
+        "p99_series": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "replicas": 1,
+        "requests": 0
+      }
+    },
+    "spans": [
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 28,
+        "kind": "server",
+        "name": "POST /checkout",
+        "parent_span_id": null,
+        "service": "gateway",
+        "span_id": "ho-cache-down-span-1-1",
+        "status": "error",
+        "trace_id": "ho-cache-down-trace-1"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 20,
+        "kind": "server",
+        "name": "POST /orders",
+        "parent_span_id": "ho-cache-down-span-1-4",
+        "service": "orders",
+        "span_id": "ho-cache-down-span-1-2",
+        "status": "error",
+        "trace_id": "ho-cache-down-trace-1"
+      },
+      {
+        "attributes": {
+          "error": "connection_refused",
+          "peer": "cache"
+        },
+        "duration_ms": 12,
+        "kind": "client",
+        "name": "cache GET /cache/sku",
+        "parent_span_id": "ho-cache-down-span-1-2",
+        "service": "orders",
+        "span_id": "ho-cache-down-span-1-3",
+        "status": "error",
+        "trace_id": "ho-cache-down-trace-1"
+      },
+      {
+        "attributes": {
+          "peer": "orders"
+        },
+        "duration_ms": 20,
+        "kind": "client",
+        "name": "orders POST /orders",
+        "parent_span_id": "ho-cache-down-span-1-1",
+        "service": "gateway",
+        "span_id": "ho-cache-down-span-1-4",
+        "status": "error",
+        "trace_id": "ho-cache-down-trace-1"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 28,
+        "kind": "server",
+        "name": "POST /checkout",
+        "parent_span_id": null,
+        "service": "gateway",
+        "span_id": "ho-cache-down-span-2-1",
+        "status": "error",
+        "trace_id": "ho-cache-down-trace-2"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 20,
+        "kind": "server",
+        "name": "POST /orders",
+        "parent_span_id": "ho-cache-down-span-2-4",
+        "service": "orders",
+        "span_id": "ho-cache-down-span-2-2",
+        "status": "error",
+        "trace_id": "ho-cache-down-trace-2"
+      },
+      {
+        "attributes": {
+          "error": "connection_refused",
+          "peer": "cache"
+        },
+        "duration_ms": 12,
+        "kind": "client",
+        "name": "cache GET /cache/sku",
+        "parent_span_id": "ho-cache-down-span-2-2",
+        "service": "orders",
+        "span_id": "ho-cache-down-span-2-3",
+        "status": "error",
+        "trace_id": "ho-cache-down-trace-2"
+      },
+      {
+        "attributes": {
+          "peer": "orders"
+        },
+        "duration_ms": 20,
+        "kind": "client",
+        "name": "orders POST /orders",
+        "parent_span_id": "ho-cache-down-span-2-1",
+        "service": "gateway",
+        "span_id": "ho-cache-down-span-2-4",
+        "status": "error",
+        "trace_id": "ho-cache-down-trace-2"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 28,
+        "kind": "server",
+        "name": "POST /checkout",
+        "parent_span_id": null,
+        "service": "gateway",
+        "span_id": "ho-cache-down-span-3-1",
+        "status": "error",
+        "trace_id": "ho-cache-down-trace-3"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 20,
+        "kind": "server",
+        "name": "POST /orders",
+        "parent_span_id": "ho-cache-down-span-3-4",
+        "service": "orders",
+        "span_id": "ho-cache-down-span-3-2",
+        "status": "error",
+        "trace_id": "ho-cache-down-trace-3"
+      },
+      {
+        "attributes": {
+          "error": "connection_refused",
+          "peer": "cache"
+        },
+        "duration_ms": 12,
+        "kind": "client",
+        "name": "cache GET /cache/sku",
+        "parent_span_id": "ho-cache-down-span-3-2",
+        "service": "orders",
+        "span_id": "ho-cache-down-span-3-3",
+        "status": "error",
+        "trace_id": "ho-cache-down-trace-3"
+      },
+      {
+        "attributes": {
+          "peer": "orders"
+        },
+        "duration_ms": 20,
+        "kind": "client",
+        "name": "orders POST /orders",
+        "parent_span_id": "ho-cache-down-span-3-1",
+        "service": "gateway",
+        "span_id": "ho-cache-down-span-3-4",
+        "status": "error",
+        "trace_id": "ho-cache-down-trace-3"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 28,
+        "kind": "server",
+        "name": "POST /checkout",
+        "parent_span_id": null,
+        "service": "gateway",
+        "span_id": "ho-cache-down-span-4-1",
+        "status": "error",
+        "trace_id": "ho-cache-down-trace-4"
+      },
+      {
+        "attributes": {
+          "http.status_code": 502
+        },
+        "duration_ms": 20,
+        "kind": "server",
+        "name": "POST /orders",
+        "parent_span_id": "ho-cache-down-span-4-4",
+        "service": "orders",
+        "span_id": "ho-cache-down-span-4-2",
+        "status": "error",
+        "trace_id": "ho-cache-down-trace-4"
+      },
+      {
+        "attributes": {
+          "error": "connection_refused",
+          "peer": "cache"
+        },
+        "duration_ms": 12,
+        "kind": "client",
+        "name": "cache GET /cache/sku",
+        "parent_span_id": "ho-cache-down-span-4-2",
+        "service": "orders",
+        "span_id": "ho-cache-down-span-4-3",
+        "status": "error",
+        "trace_id": "ho-cache-down-trace-4"
+      },
+      {
+        "attributes": {
+          "peer": "orders"
+        },
+        "duration_ms": 20,
+        "kind": "client",
+        "name": "orders POST /orders",
+        "parent_span_id": "ho-cache-down-span-4-1",
+        "service": "gateway",
+        "span_id": "ho-cache-down-span-4-4",
+        "status": "error",
+        "trace_id": "ho-cache-down-trace-4"
+      }
+    ]
+  },
+  "title": "Cache probe failing",
+  "world": {
+    "services": {
+      "cache": {
+        "config": {},
+        "crashed": true,
+        "latency_ms": 0,
+        "memory_leak": false,
+        "replicas": 1
+      },
+      "gateway": {
+        "config": {
+          "payments_fallback": false,
+          "timeout_ms": 2500,
+          "upstream_orders": "http://orders:8000"
+        },
+        "crashed": false,
+        "latency_ms": 0,
+        "memory_leak": false,
+        "replicas": 1
+      },
+      "ledger": {
+        "config": {},
+        "crashed": false,
+        "latency_ms": 0,
+        "memory_leak": false,
+        "replicas": 1
+      },
+      "orders": {
+        "config": {
+          "cache_bypass": false,
+          "cache_url": "http://cache:8000",
+          "upstream_payments": "http://payments:8000"
+        },
+        "crashed": false,
+        "latency_ms": 0,
+        "memory_leak": false,
+        "replicas": 1
+      },
+      "payments": {
+        "config": {
+          "ledger_url": "http://ledger:8000",
+          "mode": "live"
+        },
+        "crashed": false,
+        "latency_ms": 0,
+        "memory_leak": false,
+        "replicas": 1
+      }
+    }
+  }
+}
